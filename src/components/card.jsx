@@ -1,47 +1,46 @@
-import dayjs from "dayjs";
-import Image from "next/image";
+import Link from "next/link";
+import { BlogCard } from "./blog-card";
 
-const Card = async ({post}) => {
-    return (
-      <div className=" flex  bg-[#FFFFFF] ">
-        <div className="flex gap-[13px]">
-          <div className="h-[420px] w-[392px] border pl-[16px] pt-[16px] rounded-xl">
-            <Image
-              alt={post.title}
-              src={post.image}
-              className="rounded-xl"
-              width={360}
-              height={240}
-            />
-            <div className="flex">
-              {post.categories.map((category) => (
-                <div
-                  key={category}
-                  className="bg-[#4B6BFB0D] w-[66px] h-[28px] rounded-lg flex justify-center items-center mt-[20px] mb-[20px]"
-                >
-                  <p className="text-[#4B6BFB] text-[14px] ">{category}</p>
-                </div>
-              ))}
-            </div>
-            <div>
-              <p className=" text-[24px] font-bold">{post.title}</p>
-            </div>
-            <div className="flex items-center gap-5 mt-[25px]">
-              <div className="flex items-center">
-                <Image
-                  src={post.authorImage}
-                  width={36}
-                  height={36}
-                  alt={post.authorImage}
-                  className="object-cover aspect-square mr-[15px] rounded-full"
-                />
-                <p className="text-[#97989F]  font-medium">{post.authorName}</p>
-              </div>
-              <p className="text-[#97989F]">{dayjs(post.createdAt).format("MMMM DD, YYYY")}</p>
-            </div>
-          </div>
+export const Blogs = async () => {
+  const response = await fetch(
+    "https://next-mock-api.vercel.app/api/posts?size=9"
+  );
+  const data = await response.json();
+
+  const categoriesResponse = await fetch(
+    "https://next-mock-api.vercel.app/api/posts/categories"
+  );
+  const categoriesData = await categoriesResponse.json();
+
+  return (
+    <section className="container">
+      <h2 className="text-[#181A2A] font-bold text-2xl mb-7">All Blog Post</h2>
+      <div className="flex justify-between mb-8">
+        <div className="flex gap-5">
+         
+          {categoriesData.map((category, index) => (
+            <Link
+              key={index}
+              href={"/category/" + category}
+              className="text-xs font-bold text-[#495057]"
+            >
+              {category}
+            </Link>
+          ))}
+        </div>
+        <div>
+          <Link href={"/blog"} className="text-xs font-bold text-[#495057]">
+            View All
+          </Link>
         </div>
       </div>
-    );
-}
-export default Card;
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+        {data.items.map((item) => (
+          <Link key={item.id} className="block" href={`/blog/${item.id}`}>
+            <BlogCard post={item} />
+          </Link>
+        ))}
+      </div>
+    </section>
+  );
+};

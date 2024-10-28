@@ -61,18 +61,17 @@ const AllItem = () => {
               />
             </div>
             <div>
-                 <input
-              type="text"
-              name=""
-              id=""
-              placeholder="Write a message"
-              className="border w-full h-[134px] pl-4 pb-[80px]"
-            /> 
+              <input
+                type="text"
+                name=""
+                id=""
+                placeholder="Write a message"
+                className="border w-full h-[134px] pl-4 pb-[80px]"
+              />
             </div>
             <div className="w-[130px] h-[40px] rounded-lg bg-[#4B6BFB] flex justify-center mt-[30px]">
-                <button className="text-[#fff]">Send Message</button>
+              <button className="text-[#fff]">Send Message</button>
             </div>
-          
           </div>
         </div>
       </div>

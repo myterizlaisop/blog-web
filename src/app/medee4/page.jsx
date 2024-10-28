@@ -1,6 +1,5 @@
 import Footer from "@/components/footer";
 
-
 const { default: Header } = require("@/components/header");
 
 const AllItem = () => {
