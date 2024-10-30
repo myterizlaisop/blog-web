@@ -1,4 +1,4 @@
-import { BlogCard } from "@/app/components/blog-card";
+import { BlogCard } from "@/components/blog-card";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 

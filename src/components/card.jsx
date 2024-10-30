@@ -14,10 +14,12 @@ export const Blogs = async () => {
 
   return (
     <section className="container">
-      <h2 className="text-[#181A2A] font-bold text-2xl mb-7">All Blog Post</h2>
+      <h2 className="text-[#181A2A] font-bold text-2xl mt-[100px] mb-7">All Blog Post</h2>
       <div className="flex justify-between mb-8">
         <div className="flex gap-5">
-         
+          <Link href={"/blog"} className="text-xs font-bold text-[#D4A373]">
+            All
+          </Link>
           {categoriesData.map((category, index) => (
             <Link
               key={index}

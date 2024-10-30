@@ -21,7 +21,7 @@ const BlogPage = async ({ searchParams }) => {
 
   return (
     <section className="container">
-      <h1 className="text-[#181A2A] font-bold text-2xl mb-12">
+      <h1 className="text-[#181A2A] font-bold text-2xl mt-[100px] mb-12">
         {q ? `"${q}" - search results` : "All blog posts"}
       </h1>
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
